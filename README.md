@@ -1,20 +1,7 @@
 # B macro
 
-A small Roblox script that presses B repeatedly. Press T to start it, and T again to stop. The current state appears in the output.
+This is a simple Roblox macro that presses B once a second. Press T to turn it on, then press T again to stop it. You can check the output to see if it's on or off.
 
-## Run it
+You can change the key, toggle, and timing at the top of the script. `CYCLE` is the time between presses and `HOLD` is how long the key is held down.
 
-Run `b_macro.lua` in your supported environment, then press T in-game. The script tries to send key presses using `VirtualInputManager`, with `VirtualUser` as a fallback. Whether those methods work, including when Roblox is unfocused, depends on your environment and its permissions.
-
-## Change the keys or timing
-
-The settings are at the top of the script:
-
-```lua
-local TARGET_KEY = Enum.KeyCode.B
-local TOGGLE_KEY = Enum.KeyCode.T
-local CYCLE = 1
-local HOLD = 0.15
-```
-
-`CYCLE` is the time in seconds between presses; `HOLD` is how long the key stays down. If neither input method works, the script stops and prints a warning.
+The script needs an environment that allows simulated key presses. It tries `VirtualInputManager` first and falls back to `VirtualUser`. It may not work while Roblox is unfocused, depending on your setup.
