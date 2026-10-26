@@ -1,33 +1,20 @@
-# b_macro
+# B macro
 
-Simple Roblox macro that presses the **B** key on a timer.
+A small Roblox script that presses B repeatedly. Press T to start it, and T again to stop. The current state appears in the output.
 
-- **Toggle:** press **T** (in-game) to turn the macro on / off
-- **Target key:** `B`
-- **Interval:** one press every `CYCLE` seconds (default `1`)
-- **Hold time:** the key stays down for `HOLD` seconds (default `0.15`)
+## Run it
 
-Pressing **T** prints `[B-macro] ON` or `[B-macro] OFF` to the output so you can see the state.
+Run `b_macro.lua` in your supported environment, then press T in-game. The script tries to send key presses using `VirtualInputManager`, with `VirtualUser` as a fallback. Whether those methods work, including when Roblox is unfocused, depends on your environment and its permissions.
 
-## Usage
+## Change the keys or timing
 
-1. Open the script in Roblox Studio (or your executor).
-2. Paste `b_macro.lua` into a `LocalScript` inside `StarterPlayerScripts`, or run it in your executor.
-3. Press **T** in-game to start. Press **T** again to stop.
+The settings are at the top of the script:
 
-The macro injects the key press itself, so it keeps running while the game window is not focused.
+```lua
+local TARGET_KEY = Enum.KeyCode.B
+local TOGGLE_KEY = Enum.KeyCode.T
+local CYCLE = 1
+local HOLD = 0.15
+```
 
-## Settings
-
-Edit the top of `b_macro.lua`:
-
-| Setting | Default | Meaning |
-| --- | --- | --- |
-| `TARGET_KEY` | `Enum.KeyCode.B` | Key that gets pressed |
-| `TOGGLE_KEY` | `Enum.KeyCode.T` | Key that toggles the macro |
-| `CYCLE` | `1` | Seconds between presses |
-| `HOLD` | `0.15` | Seconds the key stays held |
-
-## Notes
-
-Uses `VirtualInputManager:SendKeyEvent` and falls back to `VirtualUser` if that is unavailable.
+`CYCLE` is the time in seconds between presses; `HOLD` is how long the key stays down. If neither input method works, the script stops and prints a warning.

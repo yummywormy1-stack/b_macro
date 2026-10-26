@@ -1,20 +1,17 @@
-local UserInputService = game:GetService("UserInputService")
-
+-- Change these to use a different key or timing.
 local TARGET_KEY = Enum.KeyCode.B
 local TOGGLE_KEY = Enum.KeyCode.T
 local CYCLE = 1
 local HOLD = 0.15
 
+local UserInputService = game:GetService("UserInputService")
 local running = false
 
 local function getService(name)
-	local ok, svc = pcall(function()
+	local ok, service = pcall(function()
 		return game:GetService(name)
 	end)
-	if ok then
-		return svc
-	end
-	return nil
+	return ok and service or nil
 end
 
 local VirtualInputManager = getService("VirtualInputManager")
@@ -55,7 +52,7 @@ local function pressKey()
 			return true
 		end
 	end
-	warn("[B-macro] no key injection method available")
+	warn("[B macro] Couldn't send the key press.")
 	return false
 end
 
@@ -65,7 +62,7 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
 	end
 	if input.KeyCode == TOGGLE_KEY then
 		running = not running
-		print("[B-macro] " .. (running and "ON" or "OFF"))
+		print("[B macro] " .. (running and "On" or "Off"))
 	end
 end)
 
