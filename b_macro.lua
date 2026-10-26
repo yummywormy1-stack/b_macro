@@ -1,4 +1,4 @@
--- Change these to use a different key or timing.
+
 local TARGET_KEY = Enum.KeyCode.B
 local TOGGLE_KEY = Enum.KeyCode.T
 local CYCLE = 1
